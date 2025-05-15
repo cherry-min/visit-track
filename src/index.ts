@@ -7,18 +7,10 @@ import { insertAndReturnId, insert } from './lib/dbutil';
 type Bindings = {
 	DB: D1Database
 	KV: KVNamespace;
-	//js文件
-	JS_FILE: string;
 }
 
 const app = new Hono<{ Bindings: Bindings }>()
-app.get('/js/index.min.js', (c) => {
-	console.log(c);
-	//从环境变量取js
-	const js = c.env.JS_FILE;
-	return c.text(js);
-})
-app.get("/xxx", async (c) => {
+app.get("/js/index.min.js", async (c) => {
 	const js = await c.env.KV.get('visit-track-js').then((v) => {
 		return v;
 	});
@@ -327,15 +319,15 @@ app.get("/", (c) => {
             <div class="code-option">
                 <h3>使用网络js文件</h3>
                 <pre><code>&lt;script defer src="//visit-track.yoyou.org/js/index.min.js"&gt;&lt;/script&gt;</code></pre>
+								或者
+                <pre><code>&lt;script defer src="https://cdn.jsdelivr.net/gh/cherry-min/visit-track@main/public/js/index.min.js"&gt;&lt;/script&gt;</code></pre>
             </div>
 
-       <!--
 			    <div class="code-option">
                 <h3>使用本地js文件</h3>
                 <p>访问 visit-track.yoyou.org/js/index.min.js 下载后，修改为本地路径即可，例如：</p>
                 <pre><code>&lt;script src="/front/dist/index.min.js"&gt;&lt;/script&gt;</code></pre>
             </div>
- -->
             <div class="code-option">
                 <h3>使用自定义服务地址</h3>
                 <p>如果已经部署了后端，可以使用您的服务地址：</p>
