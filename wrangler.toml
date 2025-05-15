@@ -1,0 +1,19 @@
+name = "visit-track"
+main = "src/index.ts"
+compatibility_date = "2025-05-16"
+
+[[d1_databases]]
+binding = "DB" # available in your Worker on env.DB
+database_name = "visit-track"
+database_id = your db id
+
+[[kv_namespaces]]
+binding = "KV" # available in your Worker on env.KV
+id = your kv id
+
+[placement]
+mode = "smart"
+
+[observability.logs]
+enabled = true
+
