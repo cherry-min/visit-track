@@ -316,7 +316,7 @@ app.get("/", (c) => {
         </header>
         <section class="usage-section">
             <h2>引入脚本</h2>
-            <p class="intro-text">在html的<head></head>中加入下面的 <script>...</script> 段落即可</p>
+            <p class="intro-text">在html的&lt;head"&gt;&lt;/head&gt中加入下面的 &lt;script&gt...&lt;/script&gt 段落即可</p>
 
             <div class="code-option">
                 <h3>使用网络js文件</h3>
