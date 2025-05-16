@@ -1,6 +1,6 @@
 [简体中文](./README.zh-CN.md) · **English**
 
-# Web Visitor Analytics Service Based on Cloudflare + Huno + D1
+# Web Visitor Analytics Service Based on Cloudflare + Hono + D1
 
 [Demo Site](https://visit-track.yoyou.org/)
 
@@ -94,7 +94,7 @@ Current Deployment ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ### 1. Include the Script
 
-Add the following `<script>...</script>` segment before the closing `</body>` tag in your HTML.
+Add the following `<script>...</script>` segment in the `<head>` section of your HTML.
 
 - Using the online JS file:
 
@@ -104,13 +104,19 @@ Add the following `<script>...</script>` segment before the closing `</body>` ta
 <script defer src="//visit-track.yoyou.org/js/index.min.js"></script>
 ```
 
+Or use the CDN version:
+
+```html
+<script defer src="https://cdn.jsdelivr.net/gh/cherry-min/visit-track@main/public/js/index.min.js"></script>
+```
+
 - Using a local JS file:
 
 ```html
 <script src="/front/dist/index.min.js"></script>
 ```
 
-- If you have deployed your backend, use your service address to send requests to your own service.
+- If you have deployed your own Cloudflare service, use your service address:
 
 > Change `your-url` to your worker address, like `https://visit-track.workers.dev`, and ensure there is no trailing `/`.
 
@@ -131,5 +137,11 @@ Unique Visitors on this page:<span id="page_uv"></span>
 - You can edit the script parameters to adjust the tag IDs.
 
 ```html
-<script defer src="//visit-track.yoyou.org/js/index.min.js" data-base-url="your-url" data-page-pv-id="page_pv" data-page-uv-id="page_uv"></script>
+<script
+	defer
+	src="//visit-track.yoyou.org/js/index.min.js"
+	data-base-url="your-url"
+	data-page-pv-id="page_pv"
+	data-page-uv-id="page_uv"
+></script>
 ```

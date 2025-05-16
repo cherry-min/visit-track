@@ -292,6 +292,21 @@ app.get("/", (c) => {
                 font-size: 16px;
             }
         }
+				.demo-stats {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .demo-stats p {
+            margin-bottom: 10px;
+        }
+
+        .demo-stats span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
     </style>
 </head>
 <body>
@@ -299,22 +314,9 @@ app.get("/", (c) => {
         <header>
             <h1>VisitTrack <span class="highlight">基于Cloudflare+Hono+D1的web访客统计服务</span></h1>
         </header>
-
-     <!--
-		  <div class="feature-section">
-            <div class="feature-list">
-                <ul>
-                    <li><strong>零配置</strong> - 网站访客统计服务，基于Cloudflare Worker和D1数据库构建</li>
-                    <li><strong>简化部署</strong> - 只需在页面中引入js脚本即可</li>
-                    <li><strong>数据统计</strong> - 支持PV和UV统计</li>
-                    <li><strong>易用API</strong> - 提供简单易用的API接口</li>
-                </ul>
-            </div>
-        </div>
- -->
         <section class="usage-section">
-            <h2>如何使用</h2>
-            <p class="intro-text">只需在HTML的body标签前加入以下脚本代码，然后在body标签内放置id为 <code>page_pv,page_uv</code>,即可开始统计您的网站访问数据：</p>
+            <h2>引入脚本</h2>
+            <p class="intro-text">在html的<head></head>中加入下面的 <script>...</script> 段落即可</p>
 
             <div class="code-option">
                 <h3>使用网络js文件</h3>
@@ -323,21 +325,31 @@ app.get("/", (c) => {
                 <pre><code>&lt;script defer src="https://cdn.jsdelivr.net/gh/cherry-min/visit-track@main/public/js/index.min.js"&gt;&lt;/script&gt;</code></pre>
             </div>
 
-			    <div class="code-option">
+			    	<div class="code-option">
                 <h3>使用本地js文件</h3>
-                <p>访问 visit-track.yoyou.org/js/index.min.js 下载后，修改为本地路径即可，例如：</p>
                 <pre><code>&lt;script src="/front/dist/index.min.js"&gt;&lt;/script&gt;</code></pre>
             </div>
             <div class="code-option">
                 <h3>使用自定义服务地址</h3>
-                <p>如果已经部署了后端，可以使用您的服务地址：</p>
+                <p>如果已经cloud flare服务，可以使用您的服务地址：</p>
                 <pre><code>&lt;script defer src="//visit-track.yoyou.org/js/index.min.js" data-base-url="your-url"&gt;&lt;/script&gt;</code></pre>
                 <p class="note">将 <code>your-url</code> 更改为您的worker地址，如 <code>https://visit-track.workers.dev</code>，注意结尾不要有 <code>/</code></p>
             </div>
         </section>
-
         <section class="usage-section">
-            <h2>访问统计</h2>
+            <div class="code-option">
+                <h3>数据展示</h3>
+                <p>加入id为page_pv 或 page_uv的标签，即可显示 访问人次(pv) 或 访问人数(uv)</p>
+                <div class="demo-stats">
+										<pre><code>&lt;p&gt;本页访问人次: &lt;span id="page_pv"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;本页访问人数: &lt;span id="page_uv"&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
+                </div>
+                <p>可以编辑脚本参数，调整标签id：</p>
+                <pre><code>&lt;script defer src="//visit-track.yoyou.org/js/index.min.js" data-base-url="your-url" data-page-pv-id="page_pv" data-page-uv-id="page_uv"&gt;&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+        <section class="usage-section">
+            <h2>本站访问量统计</h2>
             <div class="feature-list">
                 <ul>
                     <li><strong>本页访问人次(PV)：</strong><span id="page_pv"></span></li>

@@ -178,3 +178,6 @@ front/example/
 .dev.vars
 .wrangler/
 README_wiki.md
+
+
+wrangler.toml.local
