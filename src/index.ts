@@ -25,6 +25,8 @@ app.get("/", (c) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VisitTrack: 基于Cloudflare+D1的web访客统计服务</title>
 		<script defer src="//visit-track.yoyou.org/js/index.min.js"></script>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2166111497059480"
+     crossorigin="anonymous"></script>
     <style>
         :root {
             --primary-color: #4361ee;
